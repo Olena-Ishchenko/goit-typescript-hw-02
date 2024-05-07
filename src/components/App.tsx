@@ -33,10 +33,10 @@ function App() {
     async function fetchPhotos() {
       try {
         setIsLoading(true);
-        const data = await getPhotos<{ total_pages: number; results: [] }>(
-          query,
-          page
-        );
+        const data = await getPhotos<{
+          total_pages: number;
+          results: ImageId[];
+        }>(query, page);
         setTotalPages(data.total_pages);
 
         if (data.results.length > 0) setPhotos(p => [...p, ...data.results]);
